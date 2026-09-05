@@ -1,0 +1,1 @@
+- [Generated API numeric fields](api-contract-compatibility.md) — use contract numbers instead of integers until the workspace Zod/Orval mismatch is resolved.
