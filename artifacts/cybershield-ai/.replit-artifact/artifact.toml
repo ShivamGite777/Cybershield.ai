@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CyberShield AI"
+description = "An AI-powered cybersecurity analyst and SOC workspace for understanding threats, analyzing incidents, visualizing attack paths, and turning evidence into defensive action."
+version = "1.0.0"
+id = "artifacts/cybershield-ai"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20903
+
+[services.development]
+run = "pnpm --filter @workspace/cybershield-ai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/cybershield-ai", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/cybershield-ai/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20903"
+BASE_PATH = "/"
